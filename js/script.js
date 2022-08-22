@@ -7,7 +7,7 @@ let todoData = [];
 const render = function () {
   todoList.innerHTML = "";
   todoCompleted.innerHTML = "";
-  todoData.forEach(function (item) {
+  todoData.forEach(function (item, index) {
     if (item.text == "") {
       return;
     }
@@ -31,7 +31,7 @@ const render = function () {
       render();
     });
     li.querySelector(".todo-remove").addEventListener("click", function () {
-      todoData.pop(item);
+      todoData.splice(index, 1);
       render();
     });
   });
@@ -51,7 +51,7 @@ todoControl.addEventListener("submit", function (e) {
   render();
 });
 
-if (localStorage.getItem("todo").length > 0) {
+if (localStorage.length > 0) {
   todoData = JSON.parse(localStorage.getItem("todo"));
   render();
 }
