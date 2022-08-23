@@ -36,7 +36,7 @@ const render = function () {
     });
   });
 
-  localStorage.todo = JSON.stringify(todoData);
+  localStorage.setItem("todo", JSON.stringify(todoData));
 };
 
 todoControl.addEventListener("submit", function (e) {
